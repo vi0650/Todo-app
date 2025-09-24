@@ -1,19 +1,23 @@
 <main class="main-content">
-  <ng-container *ngIf="defaultUser as user; else noUser">
+  <ng-container *ngIf="selectedUser as user; else noUser">
     <h2 class="main-title">Tasks</h2>
-    <hr>
-    <h2>{{ user.name }}</h2><br>
+    <hr />
+    <h2>{{ user.name }}</h2>
+    <span><h3>
+    
+    </h3></span>
+    <br />
     <div class="add-task">
       <input type="text" placeholder="Enter task" [(ngModel)]="newTaskTitle" />
-      <input type="date" [(ngModel)]="selectedDate"/>
+      <input type="date" [(ngModel)]="selectedDate" />
       <button (click)="addTask()">Add</button>
     </div>
 
     <ul class="task-list">
       <li *ngFor="let task of userTasks">
         <span>{{ task.title }}</span>
-        <span>{{ task.date | date}}</span>
-        <span>{{ task.userId}}</span>
+        <span>{{ task.date | date }}</span>
+        <span>{{ user.id }}</span>
         <button class="delete" (click)="deleteTask(task.id)">✕</button>
       </li>
     </ul>

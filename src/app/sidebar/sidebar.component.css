@@ -46,6 +46,16 @@
   padding: 0;
 }
 
+.user-list button{
+  padding: 0.2rem 0.4rem;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: large;
+}
+
 .user-list li {
   padding: 0.5rem;
   border: 1px solid #ddd;
@@ -53,6 +63,12 @@
   border-radius: 4px;
   background: #f1f1f1;
   cursor: pointer;
+  justify-content: space-between;
+  display: flex;
+  grid-column:auto;
+  text-align: center;
+  align-items: center;
+  font-size: 1.2rem;
 }
 
 .user-list li:hover{

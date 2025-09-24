@@ -83,3 +83,8 @@
 .task-list .delete:hover{
   background-color: #ae1726;
 }
+
+.task.completed span{
+  text-decoration: line-through;
+  color: gray;
+}

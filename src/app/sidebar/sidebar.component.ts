@@ -12,17 +12,23 @@ import { FormsModule } from '@angular/forms';
 export class SidebarComponent {
 
   @Output() userSelected = new EventEmitter<User>();
+  @Output() userDeleted = new EventEmitter<User>();
   
   newUserName='';
   
-  users:User[] = [{id:'1', name:'Tanjiro'}];
+  users:User[] = [{id:1, name:'Tanjiro'}];
   addUser(){
-    const user:User={id:''+(this.users.length+(1)),name:this.newUserName};
+    const user:User={id:+(this.users.length+(1)),name:this.newUserName};
     this.users.push(user);
     this.newUserName='';
   }
   
   selectUser(user:User){
     this.userSelected.emit(user);
+  }
+
+  onDeleteUser(user:User){
+    this.users = this.users.filter(u => u.id !== user.id);
+    this.userDeleted.emit(user);
   }
 }

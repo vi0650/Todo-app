@@ -10,33 +10,39 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
-export class MainComponent implements OnChanges {
+export class MainComponent implements OnChanges{
 
-  @Input() defaultUser: User | null = null;
+  @Input() selectedUser: User | null = null;
+  @Input() deletedUser: User | null = null;
 
   // Mixed list of tasks for all users
   allTasks: Task[] = [
-    { id: '1', userId: '1', title: 'kill Akuza', date: '2025-09-23', completed: false }
+    { id: 1, userId: 1, title: 'kill Akuza', date: '2025-09-23', completed: false }
   ];
 
   newTaskTitle = '';
   selectedDate: string = '';
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['deletedUser'] && this.deletedUser) {
+      this.allTasks = this.allTasks.filter(task => task.userId !== this.deletedUser!.id);
+      if (this.selectedUser && this.selectedUser.id === this.deletedUser.id) {
+        this.selectedUser = null;
+      }
+    }
+  }
+  
   //getter of users task
   get userTasks(): Task[] {
-    if (!this.defaultUser) return [];
-    return this.allTasks.filter(task => task.userId === this.defaultUser!.id);
-  }
-
-  ngOnChanges(_changes: SimpleChanges) {
-    // No-op: userTasks getter derives from defaultUser and allTasks
+    if (!this.selectedUser) return [];
+    return this.allTasks.filter(task => task.userId === this.selectedUser!.id);
   }
 
   addTask() {
-    if (!this.defaultUser || !this.newTaskTitle.trim()) return;
+    if (!this.selectedUser || !this.newTaskTitle.trim()) return;
     const newTask: Task = {
-      id: String(this.allTasks.length + 1),
-      userId: this.defaultUser.id,
+      id: Number(this.allTasks.length + 1),
+      userId: this.selectedUser.id,
       title: this.newTaskTitle.trim(),
       date: this.selectedDate,
       completed: false
@@ -44,9 +50,11 @@ export class MainComponent implements OnChanges {
     this.allTasks.push(newTask);
     this.newTaskTitle = '';
     this.selectedDate = '';
+    console.log(this.allTasks);
   }
 
-  deleteTask(id: string) {
+  deleteTask(id: Number) {
     this.allTasks = this.allTasks.filter(task => task.id !== id);
+    console.log(id);
   }
 }
