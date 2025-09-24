@@ -1,0 +1,85 @@
+.main-content {
+  flex: 1;
+  padding: 1rem;
+  min-height: 100vh;
+  overflow-y: auto;
+  height: fit-content;
+  min-width: 150%;
+}
+
+.main-title {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.add-task {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.add-task input[type="text"],
+.add-task input[type="date"] {
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.add-task button {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  background: #28a745;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-task button:hover{
+  background-color: darkgreen;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  /* margin-bottom: 0.5rem; */
+  border-radius: 4px;
+}
+
+.task-list.completed span {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.task-list span {
+  flex: 1;
+  margin-left: 0.5rem;
+}
+
+.task-list input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.task-list .delete {
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 30px;
+}
+
+.task-list .delete:hover{
+  background-color: #ae1726;
+}

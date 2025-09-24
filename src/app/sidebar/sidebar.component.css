@@ -1,0 +1,60 @@
+.sidebar {
+  width: 300px;
+  background: #fff;
+  border-right: 1px solid #ddd;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  min-height: 100vh;
+}
+
+.sidebar-title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.add-user {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.add-user input {
+  flex: 1;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-user button {
+  padding: 0.2rem 0.6rem;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: large;
+}
+
+.add-user button:hover{
+  background-color: rgb(15, 95, 186);
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+}
+
+.user-list li {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  background: #f1f1f1;
+  cursor: pointer;
+}
+
+.user-list li:hover{
+  background-color:lightgrey;
+}
