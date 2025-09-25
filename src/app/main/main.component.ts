@@ -13,23 +13,22 @@ import { FormsModule } from '@angular/forms';
 export class MainComponent implements OnChanges{
 
   @Input() selectedUser: User | null = null;
-  @Input() deletedUser: User | null = null;
+  // @Input() deletedUser: User | null = null;
 
   // Mixed list of tasks for all users
   allTasks: Task[] = [
-    { id: 1, userId: 1, title: 'kill Akuza', date: '2025-09-23', completed: false }
+    { id: 1, userId: 1, title: 'kill Muzan Kibutsuzi', date: '2025-09-23' },
+    { id: 1, userId: 2, title: 'kill Upper moon 6', date: '2025-09-29'},
+    { id: 1, userId: 3, title: 'kill upper moon 2', date: '2025-09-30'},
   ];
 
   newTaskTitle = '';
   selectedDate: string = '';
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['deletedUser'] && this.deletedUser) {
-      this.allTasks = this.allTasks.filter(task => task.userId !== this.deletedUser!.id);
-      if (this.selectedUser && this.selectedUser.id === this.deletedUser.id) {
-        this.selectedUser = null;
-      }
-    }
+    // if (changes['deletedUser'] && this.deletedUser) {
+    //  this.allTasks = this.allTasks.filter(task => task.userId !== this.deletedUser!.id);
+    // }
   }
   
   //getter of users task
@@ -44,8 +43,7 @@ export class MainComponent implements OnChanges{
       id: Number(this.allTasks.length + 1),
       userId: this.selectedUser.id,
       title: this.newTaskTitle.trim(),
-      date: this.selectedDate,
-      completed: false
+      date: this.selectedDate
     };
     this.allTasks.push(newTask);
     this.newTaskTitle = '';
@@ -55,6 +53,5 @@ export class MainComponent implements OnChanges{
 
   deleteTask(id: Number) {
     this.allTasks = this.allTasks.filter(task => task.id !== id);
-    console.log(id);
   }
 }
