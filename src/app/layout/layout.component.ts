@@ -13,16 +13,9 @@ import { User } from '../core/models/user.model';
 export class LayoutComponent {
 
   selectedUser: User | null = null;
-  // deletedUser: User | null = null;
-
-  // defaultUser:any = this.selectedUser;
 
   onUserSelected(user:User){
     this.selectedUser=user;
+    console.log(user);   
   }
-
-  // onUserdeleted(user:User){
-  //   this.deletedUser=user;
-  //   console.log(this.deletedUser);
-  // }
 }

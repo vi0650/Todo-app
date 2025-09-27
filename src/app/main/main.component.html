@@ -17,7 +17,7 @@
       <li *ngFor="let task of userTasks">
         <span>{{ task.title }}</span>
         <span>{{ task.date | date }}</span>
-        <span>{{ user.id }}</span>
+        <span>{{ task.id }}</span>
         <button class="delete" (click)="deleteTask(task.id)">✕</button>
       </li>
     </ul>

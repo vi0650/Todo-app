@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { User } from '../core/models/user.model';
 import { CommonModule } from '@angular/common';
 import { Task } from '../core/models/task.model';
@@ -10,10 +10,13 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
-export class MainComponent implements OnChanges{
+export class MainComponent implements OnInit{
 
   @Input() selectedUser: User | null = null;
-  // @Input() deletedUser: User | null = null;
+
+  ngOnInit(): void {
+    console.log(this.allTasks);
+  }
 
   // Mixed list of tasks for all users
   allTasks: Task[] = [
@@ -24,23 +27,17 @@ export class MainComponent implements OnChanges{
 
   newTaskTitle = '';
   selectedDate: string = '';
-
-  ngOnChanges(changes: SimpleChanges) {
-    // if (changes['deletedUser'] && this.deletedUser) {
-    //  this.allTasks = this.allTasks.filter(task => task.userId !== this.deletedUser!.id);
-    // }
-  }
   
   //getter of users task
   get userTasks(): Task[] {
     if (!this.selectedUser) return [];
-    return this.allTasks.filter(task => task.userId === this.selectedUser!.id);
+    return this.allTasks.filter(task => task.userId === this.selectedUser!.id);    
   }
 
   addTask() {
     if (!this.selectedUser || !this.newTaskTitle.trim()) return;
     const newTask: Task = {
-      id: Number(this.allTasks.length + 1),
+      id: (this.allTasks.length + 1),
       userId: this.selectedUser.id,
       title: this.newTaskTitle.trim(),
       date: this.selectedDate
@@ -48,10 +45,11 @@ export class MainComponent implements OnChanges{
     this.allTasks.push(newTask);
     this.newTaskTitle = '';
     this.selectedDate = '';
-    console.log(this.allTasks);
+    console.log(newTask);
   }
 
   deleteTask(id: Number) {
     this.allTasks = this.allTasks.filter(task => task.id !== id);
+    console.log(id)
   }
 }
