@@ -15,15 +15,12 @@ export class MainComponent implements OnInit{
   @Input() selectedUser: User | null = null;
 
   ngOnInit(): void {
+    this.getTask();
     console.log(this.allTasks);
   }
 
   // Mixed list of tasks for all users
-  allTasks: Task[] = [
-    { id: 1, userId: 1, title: 'kill Muzan Kibutsuzi', date: '2025-09-23' },
-    { id: 1, userId: 2, title: 'kill Upper moon 6', date: '2025-09-29'},
-    { id: 1, userId: 3, title: 'kill upper moon 2', date: '2025-09-30'},
-  ];
+  allTasks: Task[] = [];
 
   newTaskTitle = '';
   selectedDate: string = '';
@@ -32,6 +29,24 @@ export class MainComponent implements OnInit{
   get userTasks(): Task[] {
     if (!this.selectedUser) return [];
     return this.allTasks.filter(task => task.userId === this.selectedUser!.id);    
+  }
+
+  getTask(){
+    const userTask = localStorage.getItem('allTasks')
+    if(userTask){
+      this.allTasks = JSON.parse(userTask);
+    }else{
+      this.allTasks = [
+        { id: 1, userId: 1, title: 'kill Muzan Kibutsuzi', date: '2025-09-23' },
+        { id: 1, userId: 2, title: 'kill Upper moon 6', date: '2025-09-29'},
+        { id: 1, userId: 3, title: 'kill upper moon 2', date: '2025-09-30'},
+      ];
+      this.setTask();
+    }
+  }
+
+  setTask(){
+    localStorage.setItem('allTasks',JSON.stringify(this.allTasks));
   }
 
   addTask() {
@@ -43,6 +58,7 @@ export class MainComponent implements OnInit{
       date: this.selectedDate
     };
     this.allTasks.push(newTask);
+    this.setTask();
     this.newTaskTitle = '';
     this.selectedDate = '';
     console.log(newTask);

@@ -14,33 +14,33 @@ export class SidebarComponent implements OnInit {
   @Output() userSelected = new EventEmitter<User>();
 
   ngOnInit(): void {
-    this.loadUsersFromStorage();
+    this.getUserData();
   }
 
   newUserName = '';
-
   users: User[] = [];
 
-  loadUsersFromStorage() {
+  getUserData() {
     const storedUsers = localStorage.getItem('users');
     if (storedUsers) {
       this.users = JSON.parse(storedUsers);
+      console.log('data from localstorage');
     } else {
-      // Default users if no data in localStorage
       this.users = [{ id: 1, name: 'Tanjiro' }, { id: 2, name: 'Zenitsu' }, { id: 3, name: 'Inosuke' }];
-      this.saveUsersToStorage();
+      this.setUserData();
+      console.log('dummy data');
     }
   }
 
-  saveUsersToStorage() {
+  setUserData() {
     localStorage.setItem('users', JSON.stringify(this.users));
   }
 
   addUser() {
     const user: User = { id: (this.users.length + 1), name: this.newUserName };
     this.users.push(user);
+    this.setUserData();
     this.newUserName = '';
-    this.saveUsersToStorage();
     console.log(this.users);
   }
 
