@@ -1,5 +1,5 @@
 .sidebar {
-  width: 300px;
+  width: 250px;
   background: #fff;
   border-right: 1px solid #ddd;
   padding: 1rem;
@@ -19,9 +19,9 @@
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
-
 .add-user input {
-  flex: 1;
+  flex: 0;
+  width: 180px;
   padding: 0.4rem;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -30,7 +30,7 @@
 .add-user button {
   padding: 0.2rem 0.6rem;
   border: none;
-  background: #007bff;
+  background: #64afff;
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -38,22 +38,12 @@
 }
 
 .add-user button:hover{
-  background-color: rgb(15, 95, 186);
+  background-color: rgb(49, 123, 207);
 }
 
 .user-list {
   list-style: none;
   padding: 0;
-}
-
-.user-list button{
-  padding: 0.2rem 0.4rem;
-  border: none;
-  background: #ffbb00;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: large;
 }
 
 .user-list li {
@@ -68,9 +58,31 @@
   grid-column:auto;
   text-align: center;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
 }
 
-.user-list li:hover{
+.user-list p{
+  padding: 5px;
+  margin: 0px;
+}
+
+.user-list p:hover{
   background-color:lightgrey;
+  padding: 5px;
+  margin: 0px;
+  border-radius: 5px;
+}
+
+.footer{
+  padding: 0.2rem 0.6rem;
+  border: none;
+  background: #f7a85e;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: large;
+}
+
+.footer:hover{
+  background-color:#c3854c;
 }

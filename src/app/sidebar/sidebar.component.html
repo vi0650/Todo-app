@@ -8,7 +8,9 @@
 
   <ul class="user-list">
     <li *ngFor="let user of users">
-      <p style="margin: 0;" (click)="selectUser(user)">{{ user.name }}</p>
+      <p style="margin: 0" (click)="selectUser(user)">{{ user.name }}</p>
+      <p><span></span></p>
+      <button class="footer" (click)="wipeUser(user.id)">×</button>
     </li>
   </ul>
 </aside>

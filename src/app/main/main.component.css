@@ -66,7 +66,12 @@
 }
 
 .task-list input[type="checkbox"] {
-  margin-right: 10px;
+  margin: 10px;
+  /* font-style: italic; */
+}
+
+.italic{
+  text-decoration: line-through;
 }
 
 .task-list .delete {

@@ -16,7 +16,6 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.getUserData();
   }
-
   newUserName = '';
   users: User[] = [];
 
@@ -26,26 +25,28 @@ export class SidebarComponent implements OnInit {
       this.users = JSON.parse(storedUsers);
       console.log('data from localstorage');
     } else {
-      this.users = [{ id: 1, name: 'Tanjiro' }, { id: 2, name: 'Zenitsu' }, { id: 3, name: 'Inosuke' }];
+      this.users = [{ id: '1', name: 'Tanjiro' }, { id: '2', name: 'Zenitsu' }, { id: '3', name: 'Inosuke' }];
       this.setUserData();
       console.log('dummy data');
     }
   }
-
   setUserData() {
     localStorage.setItem('users', JSON.stringify(this.users));
   }
-
   addUser() {
-    const user: User = { id: (this.users.length + 1), name: this.newUserName };
+    const user: User = { id: (this.users.length + 1).toString(), name: this.newUserName };
     this.users.push(user);
     this.setUserData();
     this.newUserName = '';
     console.log(this.users);
   }
-
   selectUser(user: User) {
     this.userSelected.emit(user);
     console.log(user);
   }
+  wipeUser(id: string) {
+    this.users = this.users.filter(user => user.id !== id);
+    this.setUserData();
+  }
+image ='/public/favicon.ico'
 }
