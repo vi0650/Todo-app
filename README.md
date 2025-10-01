@@ -54,6 +54,31 @@ ng e2e
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
+## Deployment to GitHub Pages
+
+This project is configured for automatic deployment to GitHub Pages.
+
+### Manual Deployment
+
+To manually deploy to GitHub Pages:
+
+```bash
+npm run deploy
+```
+
+### Automatic Deployment
+
+The project includes a GitHub Actions workflow that automatically deploys to GitHub Pages when you push to the `master` or `main` branch.
+
+### Setup GitHub Pages
+
+1. Go to your repository settings on GitHub
+2. Navigate to the "Pages" section
+3. Under "Source", select "GitHub Actions"
+4. The deployment will happen automatically when you push to the main branch
+
+Your app will be available at: `https://yourusername.github.io/todo/`
+
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
