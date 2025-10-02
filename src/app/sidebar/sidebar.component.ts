@@ -26,7 +26,7 @@ export class SidebarComponent implements OnInit {
       this.users = JSON.parse(storedUsers);
       console.log('data from localstorage');
     } else {
-      this.users = [{ id: '1', name: 'Tanjiro' }, { id: '2', name: 'Zenitsu' }, { id: '3', name: 'Inosuke' }];
+      this.users = [{ id: '1', name: 'user-1' }, { id: '2', name: 'user-2' }, { id: '3', name: 'user-3' }];
       this.setUserData();
     }
   }
