@@ -46,7 +46,8 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "/Todo-app/"
             },
             "development": {
               "optimization": false,
@@ -95,7 +96,8 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "/todo/"
+          "baseHref": "/Todo-app/",
+          "outputPath": "dist/todo"
           }
         }
       }
