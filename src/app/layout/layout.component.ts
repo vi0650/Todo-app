@@ -13,9 +13,16 @@ import { User } from '../core/models/user.model';
 export class LayoutComponent {
 
   selectedUser: User | null = null;
+  deletedUserId: string | null = null;
 
   onUserSelected(user:User){
-    this.selectedUser=user;
-    console.log(user);   
+    this.selectedUser=user;   
+  }
+
+  onUserDeleted(deletedId: string){
+    this.deletedUserId = deletedId;
+    if (this.selectedUser && this.selectedUser.id === deletedId) {
+      this.selectedUser = null;
+    }
   }
 }

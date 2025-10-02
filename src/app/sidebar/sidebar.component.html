@@ -1,16 +1,18 @@
 <aside class="sidebar">
-  <h2 class="sidebar-title">Users</h2>
-
-  <div class="add-user">
-    <input type="text" placeholder="Enter user" [(ngModel)]="newUserName" />
-    <button (click)="addUser()">+</button>
-  </div>
+    <h2 class="sidebar-title">Users</h2>
+    <div class="add-user">
+      <input type="text" placeholder="Enter user" [(ngModel)]="newUserName" />
+      <button (click)="addUser()">+</button>
+    </div>
 
   <ul class="user-list">
     <li *ngFor="let user of users">
       <p style="margin: 0" (click)="selectUser(user)">{{ user.name }}</p>
       <p><span></span></p>
-      <button class="footer" (click)="wipeUser(user.id)">×</button>
+      <button class="user-delete" (click)="wipeUser(user.id)">×</button>
     </li>
   </ul>
+  <div>
+    <p class="clear-user-info">to clear dummy data delete all users</p>
+  </div>
 </aside>

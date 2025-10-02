@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 export class SidebarComponent implements OnInit {
 
   @Output() userSelected = new EventEmitter<User>();
+  @Output() userDeleted = new EventEmitter<string>();
 
   ngOnInit(): void {
     this.getUserData();
@@ -27,7 +28,6 @@ export class SidebarComponent implements OnInit {
     } else {
       this.users = [{ id: '1', name: 'Tanjiro' }, { id: '2', name: 'Zenitsu' }, { id: '3', name: 'Inosuke' }];
       this.setUserData();
-      console.log('dummy data');
     }
   }
   setUserData() {
@@ -38,15 +38,14 @@ export class SidebarComponent implements OnInit {
     this.users.push(user);
     this.setUserData();
     this.newUserName = '';
-    console.log(this.users);
   }
   selectUser(user: User) {
     this.userSelected.emit(user);
-    console.log(user);
   }
   wipeUser(id: string) {
     this.users = this.users.filter(user => user.id !== id);
     this.setUserData();
+    this.userDeleted.emit(id);
   }
-image ='/public/favicon.ico'
+  image = '/public/favicon.ico';
 }

@@ -1,4 +1,4 @@
 <div class="layout">
-    <app-sidebar (userSelected)="onUserSelected($event)"></app-sidebar>
-    <app-main [selectedUser]="selectedUser"></app-main>
+    <app-sidebar (userSelected)="onUserSelected($event)" (userDeleted)="onUserDeleted($event)"></app-sidebar>
+    <app-main [selectedUser]="selectedUser" [deletedUserId]="deletedUserId"></app-main>
 </div>

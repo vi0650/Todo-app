@@ -16,8 +16,8 @@
       <li *ngFor="let task of userTasks">
         <input type="checkbox" [(ngModel)]="task.completed" (change)="toggleCheck(task.id)">
         <span [ngStyle]="{'text-decoration' : task.completed ? 'line-through' : 'none'}">{{ task.title }}</span>
-        <span>{{ task.date | date }}</span>
-        <span>{{ task.id }}</span>
+        <span [ngStyle]="{'text-decoration' : task.completed ? 'line-through' : 'none'}">{{ task.date | date }}</span>
+        <span [ngStyle]="{'text-decoration' : task.completed ? 'line-through' : 'none'}">{{ task.id }}</span>
         <button class="delete" (click)="deleteTask(task.id)">✕</button>
       </li>
     </ul>

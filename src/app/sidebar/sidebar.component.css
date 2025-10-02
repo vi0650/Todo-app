@@ -73,7 +73,7 @@
   border-radius: 5px;
 }
 
-.footer{
+.user-delete{
   padding: 0.2rem 0.6rem;
   border: none;
   background: #f7a85e;
@@ -83,6 +83,24 @@
   font-size: large;
 }
 
-.footer:hover{
+.user-delete:hover{
   background-color:#c3854c;
 }
+
+.clear-user-info{
+  padding: 0.2rem 0.6rem;
+  border: none;
+  background: #e0e0e000;
+  color: lightslategrey;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: medium;
+  width: 229px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  position: fixed;
+  backdrop-filter: blur(1px);
+  border: 1px solid orange;
+}
+
